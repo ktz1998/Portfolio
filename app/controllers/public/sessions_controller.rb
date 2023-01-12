@@ -4,9 +4,9 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   #ゲストログイン機能
-  def guest_sign_in
+  def new_guest
     user = User.guest
-    sign_in user
+    sign_in user   # ユーザーをログインさせる
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
