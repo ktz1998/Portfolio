@@ -4,12 +4,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   namespace :admin do
-    resources :user, only: [:index, :show, :edit, :update]
-    resources :items, only: [:index, :new, :show, :edit, :create, :update]
-    #resources :genres, only: [:index, :edit, :create, :update]
-    resources :orders, only: [:show, :update]
-    resources :order_products, only: [:update]
-    get 'homes/top'
+
   end
 
   #顧客用
@@ -22,6 +17,7 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     root "homes#top"
+    resources :users, only: [:show, :edit, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
