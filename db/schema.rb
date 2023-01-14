@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2023_01_13_101113) do
     t.string "name", null: false
     t.integer "price", null: false
     t.text "description", null: false
-    t.float "rate", default: 0.0, null: false
+    t.integer "rate", null: false
     t.text "review", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,15 +1,29 @@
-<h1>新規投稿</h1>
+<div class="container">
   <%= form_with model: @item do |f| %>
-    <h4>画像</h4>
-      <%= f.file_field :image, accept: "image/*" %>
-    <h4>製品名</h4>
-      <%= f.text_field :name %>
-    <h4>説明</h4>
-      <%= f.text_area :description %>
-    <h4>価格</h4>
-    　<%= f.text_field :price %>
-    <h4>レビュー</h4>
-      <%= f.text_area :review %>
-
+    <h1>新規投稿</h1>
+    <h5 class="mt-3">画像</h4>
+      <%= f.file_field :image, accept: "image/*" , class: "mb-3" %>
+    <h5 class="mt-3">製品名</h4>
+      <%= f.text_field :name, class: "col-md-6 mb-3" %>
+    <h5 class="mt-3">説明</h4>
+      <%= f.text_area :description, class: "col-md-6 mb-3" %>
+    <h5 class="mt-3">価格</h4>
+    　<%= f.text_field :price, class: "mb-3" %>
+    <h5 class="mt-3">レビュー</h4>
+      <%= f.text_area :review, class: "mb-3" %>
+    <h5 class="mt-3">評価</h5>
+      <div class="post_form">
+        <%= f.radio_button :rate, 5 ,id: 'star1'%>
+          <label for="star1"><span class="text">最高</span>★</label>
+        <%= f.radio_button :rate, 4 ,id: 'star2'%>
+          <label for="star2"><span class="text">良い</span>★</label>
+        <%= f.radio_button :rate, 3 ,id: 'star3'%>
+          <label for="star3"><span class="text">普通</span>★</label>
+        <%= f.radio_button :rate, 2 ,id: 'star4'%>
+          <label for="star4"><span class="text">悪い</span>★</label>
+        <%= f.radio_button :rate, 1 ,id: 'star5'%>
+          <label for="star5"><span class="text">最悪</span>★</label>
+      </div>
     <%= f.submit '投稿' %>
   <% end %>
+</div>
