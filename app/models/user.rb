@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :items, dependent: :destroy
+
   #ゲストログイン機能
   def self.guest
     find_or_create_by!(email: 'aaa@aaa.com') do |user|
