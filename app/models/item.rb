@@ -6,17 +6,14 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  #星評価機能
-  def getPercent(number)
-    if number.present?
-      calPercent = number/5.to_f * 100
-      percent = calPercent.round
-      #↑CSSは小数が含まれると、widthの幅を指定できないので四捨五入して整数化
-      return percent.to_s
-    else
-      return 0
+  def get_image(width, height)
+    unless image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      image.attach(io: File.open(file_path), filename: 'default-image.jpg')
     end
+      image.variant(resize_to_limit: [width, height]).processed
   end
+
 
 
 end

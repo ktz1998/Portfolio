@@ -10,6 +10,10 @@ class Public::ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def index
+    @items = Item.all
+  end
+
   def show
     @item = Item.find(params[:id])
   end
@@ -22,7 +26,6 @@ class Public::ItemsController < ApplicationController
 
   def destroy
   end
-
   private
 
   def item_params
