@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PF</title>
+    <title>デバイス見聞録</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/2f845c03c2.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -28,7 +28,7 @@
               <% if user_signed_in? %>
                 <span class="navbar-brand mb-0 h1" style="color: white;">ようこそ、<%= current_user.name %>さん!</span>
                 <li class="nav-item">
-                  <%= link_to '投稿フォーム', new_item_path, class: "btn btn-outline-dark btn-border-white" %>
+                  <%= link_to 'レビューする', new_item_path, class: "btn btn-outline-dark btn-border-white" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark btn-border-white" %>

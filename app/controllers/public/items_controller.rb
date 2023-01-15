@@ -19,14 +19,19 @@ class Public::ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
   end
 
   def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to items_path
   end
-  private
+
+   private
 
   def item_params
     params.require(:item).permit(:name, :image, :description, :price, :review, :rate)
