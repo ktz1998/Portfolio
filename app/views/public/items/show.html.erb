@@ -14,9 +14,20 @@
           <span class="star-rating-back">★★★★★</span>
         </span>
         <p>投稿者：<%= @item.user.name %></p>
+        <% if @item.user == current_user %>
+        <p>
+          <span><%= link_to '編集', edit_item_path(@item), class: "btn btn-sm btn-success" %></span>
+          <span>
+            <%= link_to @item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
+          </span>
+        </p>
+        <% end %>
       </td>
       </tr>
     </table>
   </div>
+  <%= link_to '一覧へ戻る', items_path %>
   <h3>製品レビュー</h3>
   <p><%= @item.review %></p>
