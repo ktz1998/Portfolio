@@ -33,4 +33,7 @@
   <p><%= @item.review %></p>
   <%= link_to '一覧へ戻る', items_path %>
   
+  <%= render "public/comments/show", item: @item %>
+  <%= render "public/comments/form", item: @item, comment: @comment %>
   
+</div>

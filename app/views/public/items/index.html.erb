@@ -4,8 +4,10 @@
   <% @items.each do |item| %>
     <div class="mx-auto">
       <div class="card-deck">
-        <div class="card" style="width: 15rem;">
-          <%= image_tag item.get_image(200,200) %>
+        <div class="card" style="width: 15rem; height: 500px;">
+          <div class="text-center" style="height: 200px;">
+           <%= image_tag item.get_image(200,200) %>       
+          </div>
           <div class="card-body">
             <%= link_to(item) do %>
               <h5 class="card-title margin-b0"><%= item.name %></h5>

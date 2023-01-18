@@ -4,6 +4,7 @@ class Item < ApplicationRecord
     greater_than_or_equal_to: 1}, presence: true
 
   belongs_to :user
+  has_many :comments
   has_one_attached :image
 
   def get_image(width, height)
