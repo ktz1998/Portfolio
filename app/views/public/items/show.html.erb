@@ -1,2 +1,22 @@
-<h1>Public::Item#show</h1>
-<p>Find me in app/views/public/item/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <tr>
+      <td class="col-md-3">
+        <%= image_tag @item.get_image(400,400) %>
+      </td>
+      <td class="col-md-7">
+        <h3><%= @item.name %></h3>
+        <p><%= @item.description %></p>
+        <p>¥<%= @item.price %></p>
+        <span class="star-rating margin-b0">
+          <span class="star-rating-front" style="width: <%= getPercent(@item.rate) %>%;">★★★★★</span>
+          <span class="star-rating-back">★★★★★</span>
+        </span>
+        <p>投稿者：<%= @item.user.name %></p>
+      </td>
+      </tr>
+    </table>
+  </div>
+  <h3>製品レビュー</h3>
+  <p><%= @item.review %></p>
