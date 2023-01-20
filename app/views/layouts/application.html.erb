@@ -14,7 +14,7 @@
     <header class="text-white shadow-sm  sticky-top">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-           <a class="navbar-brand p-3" href="/">HOME</a>
+           <a class="navbar-brand p-3 text-light" href="/"><i class="fa-solid fa-house"></i>ホーム</a>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
@@ -22,11 +22,14 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
               </form>
               <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <span class="navbar-brand mb-0 h1" style="color: white;">ようこそ、<%= current_user.name %>さん!</span>
+                <li class="nav-item mr-2">
+                  <%= link_to "マイページ", user_path(current_user), class: "btn btn-outline-dark btn-border-white" %>
+                </li>
                 <li class="nav-item mr-2">
                   <%= link_to 'レビューする', new_item_path, class: "btn btn-outline-dark btn-border-white" %>
                 </li>
