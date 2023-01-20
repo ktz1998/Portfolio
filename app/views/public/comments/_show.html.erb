@@ -3,12 +3,16 @@
     <div class="card-body">
         <div class="card-text">
             <p><%= comment.comment %></p>
-            <p><%= comment.user.name %></p>
-            <%# if comment.user == current_user %>
-                
+            <p class="small">
+                <span><%= comment.user.name %></span>
+                <span><%= l comment.created_at %></span> <!--時間表示、 lメソッドを使って書式を指定する -->
+            </p>
+            <p>
+              <% if comment.user == current_user %>
+                  <%= link_to '削除', item_comment_path(item, comment), method: :delete, class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </p>
         </div>
-        
-        
     </div>
 </div>
 <% end %>

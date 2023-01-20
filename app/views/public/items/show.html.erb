@@ -6,9 +6,9 @@
         <%= image_tag @item.get_image(400,400) %>
       </td>
       <td class="col-md-7">
-        <h3><%= @item.name %></h3>
+        <h1><%= @item.name %></h1>
         <p><%= @item.description %></p>
-        <p>¥<%= @item.price %></p>
+        <h3>¥<%= @item.price %></h3>
         <span class="star-rating margin-b0">
           <span class="star-rating-front" style="width: <%= getPercent(@item.rate) %>%;">★★★★★</span>
           <span class="star-rating-back">★★★★★</span>

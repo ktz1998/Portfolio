@@ -1,5 +1,6 @@
 <div class="container">
-  <%= form_with model: @item do |f| %>
+  <div class="row">
+    <%= form_with model: @item do |f| %>
     <h1>新規投稿</h1>
     <h5 class="mt-3">画像</h4>
       <%= f.file_field :image, accept: "image/*" , class: "mb-3" %>
@@ -25,5 +26,6 @@
           <label for="star5">★</label>
       </div>
     <%= f.submit '投稿' %>
-  <% end %>
+    <% end %>
+  </div>
 </div>

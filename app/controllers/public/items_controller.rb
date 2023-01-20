@@ -1,4 +1,7 @@
 class Public::ItemsController < ApplicationController
+  # before_action :authenticate_user!
+  # before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  
   def new
     @item = Item.new
   end
@@ -24,6 +27,12 @@ class Public::ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to items_path(@item)
+    else
+      render "edit"
+    end
   end
 
   def destroy
