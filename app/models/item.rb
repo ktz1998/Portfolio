@@ -5,6 +5,8 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_many :comments
+  has_many :item_tags, dependent: :destroy
+  has_many :tags, through: :item_tags, dependent: :destroy
   has_one_attached :image
 
   def get_image(width, height)
@@ -14,6 +16,7 @@ class Item < ApplicationRecord
     end
       image.variant(resize_to_limit: [width, height]).processed
   end
+  
 
 
 

@@ -17,6 +17,13 @@
               <span class="star-rating-back">★★★★★</span>
             </span>
             <p class="card-text">投稿者：<%= item.user.name %></p>
+            
+            <div>
+            <% item.tags.each do |tag| %>
+              <%= tag.teg_name %>
+            <% end %>
+            </div>
+            
             <% if item.user == current_user %>
             <p>
               <span><%= link_to '編集', edit_item_path(item), class: "btn btn-sm btn-success" %></span>
