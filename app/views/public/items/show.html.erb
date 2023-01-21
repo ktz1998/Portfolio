@@ -29,9 +29,15 @@
     </table>
   </div>
   
-  <h3>製品レビュー</h3>
-  <p><%= @item.review %></p>
-  <%= link_to '一覧へ戻る', items_path %>
+  <div class="card">
+    <h3 class="card-header">製品レビュー</h3>
+    <div class="card-body">
+      <p class="card-text"><%= @item.review %></p>
+    </div>
+  </div>
+  <div class="mt-3 mb-5">
+    <%= link_to '製品一覧へ戻る', items_path %>
+  </div>
   
   <%= render "public/comments/show", item: @item %>
   <%= render "public/comments/form", item: @item, comment: @comment %>

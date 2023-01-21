@@ -1,33 +1,39 @@
 <div class="container">
-  <h1>マイページ詳細</h1>
-    <div class="card">
-      <div class="card-header">レビュー履歴</div>
-      <% @items.each do |item| %>
-      <table class="card-table table">
-        <tbody>
-          <tr>
-            <td class="col-sm-1">
-              <%= link_to(item) do %>
-                <%= image_tag item.get_image(50,50) %>
-              <% end %>
-            </td>
-            <td class="col-sm-5">
-            　<%= link_to(item) do %>
-                <%= item.name %>
-            　<% end %>
-            </td>
-            <td class="col-sm-4">
-              <span class="star-rating margin-b0">
-              <span class="star-rating-front" style="width: <%= getPercent(item.rate) %>%;">★★★★★</span>
-              <span class="star-rating-back">★★★★★</span>
-            </span>
-            </td>
-            <td class="col-sm-2">コメント数:<%= item.comments.count %></td>
-          </tr>
-        </tbody>
-      </table>
-      <% end %>
-      </div>
-    </div>
+  <h1 class="mt-3">マイページ詳細</h1>
+  <%= form_with model: @user do |f| %>
+  <div class="row justify-content-center p-2">
+    <%= f.label :ユーザーネーム ,class: "col-sm-2 d-flex align-items-center" %>
+    <%= f.text_field :name, class: "col-sm-3 form-control name" %>
+    <%= f.submit "更新", class: "btn btn-sm btn-success col-sm-1" %>
+  </div>
+  <% end %>
+  <div class="card">
+    <div class="card-header">レビュー履歴</div>
+    <% @items.each do |item| %>
+    <table class="card-table table">
+      <tbody>
+        <tr>
+          <td class="col-sm-1">
+            <%= link_to(item) do %>
+              <%= image_tag item.get_image(50,50) %>
+            <% end %>
+          </td>
+          <td class="col-sm-5">
+          　<%= link_to(item) do %>
+              <%= item.name %>
+          　<% end %>
+          </td>
+          <td class="col-sm-4">
+            <span class="star-rating margin-b0">
+            <span class="star-rating-front" style="width: <%= getPercent(item.rate) %>%;">★★★★★</span>
+            <span class="star-rating-back">★★★★★</span>
+          </span>
+          </td>
+          <td class="col-sm-2">コメント数:<%= item.comments.count %></td>
+        </tr>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
 </div>
 
