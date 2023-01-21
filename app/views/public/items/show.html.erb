@@ -23,11 +23,12 @@
             <% end %>
           </span>
         </p>
-        <% end %>
-      </td>
-      <td><% @item.tags.each do |tag| %>
+        <p>
+          <% @item.tags.each do |tag| %>
           <%= tag.tag_name %>
           <% end %>
+        </p>
+        <% end %>
       </td>
       </tr>
     </table>
