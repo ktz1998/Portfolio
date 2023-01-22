@@ -12,6 +12,7 @@ Tag.create([
     { tag_name: 'タブレット端末' },
     { tag_name: 'イヤホン/ヘッドホン'},
     { tag_name: 'ケーブル類'},
+    { tag_name: 'パソコン/ノートPC'},
     { tag_name: 'モニター'},
     { tag_name: 'キーボード'},
     ])
