@@ -24,6 +24,17 @@
         <%= f.radio_button :rate, 1 ,id: 'star5'%>
           <label for="star5">★</label>
       </div>
+      
+      <div class="check_box">
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
+        <div class='form-check'>
+          <%= tag.label do %>
+        　   <%= tag.check_box %>
+        　   <%= tag.text %>
+        　<% end %>
+        </div>
+      <% end %>
+    </div>
     <%= f.submit '投稿' %>
     <% end %>
 </div>
