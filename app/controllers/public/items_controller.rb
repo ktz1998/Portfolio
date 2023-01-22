@@ -14,7 +14,13 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    if params[:tag_id].present?
+      @items =  Item.includes(:tags).where(tags: {id: params[:tag_id]})
+    else
+      @items = Item.all
+    end
+    
+    @tags = Tag.all
   end
 
   def show
