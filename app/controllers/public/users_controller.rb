@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @items = @user.items
+    @items = @user.items.page(params[:page]).per(10)
   end
 
   def edit

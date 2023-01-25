@@ -3,7 +3,7 @@ class Item < ApplicationRecord
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 1}, presence: true
   validates :description, length: { maximum: 252 }
-  validates :review, length: { minimum: 1, maximum: 252 }
+  validates :review, length: { minimum: 1, maximum: 800 }
 
   belongs_to :user
   has_many :comments

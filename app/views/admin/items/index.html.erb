@@ -38,14 +38,11 @@
               <% end %>
               </div>
               
-              <%# if item.user == current_user %>
               <p>
-                <!--<span><%#= link_to '編集', edit_item_path(item), class: "btn btn-sm btn-success" %></span>-->
                 <span>
                   <%= link_to "削除", admin_item_path(item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
                 </span>
               </p>
-              <%# end %>
             </div>
           </div>
         </div>
@@ -53,3 +50,4 @@
     <% end %>
   </div>
 </div>
+<%= paginate @items %>
