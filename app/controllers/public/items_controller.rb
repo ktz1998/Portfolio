@@ -38,8 +38,9 @@ class Public::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to items_path(@item)
+      redirect_to item_path(@item), notice: "更新しました"
     else
+      flash.now[:alert] = "更新に失敗しました。文字数などを再度確認してください。"
       render "edit"
     end
   end
