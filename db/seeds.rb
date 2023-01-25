@@ -16,3 +16,6 @@ Tag.create([
     { tag_name: 'モニター'},
     { tag_name: 'キーボード'},
     ])
+    
+##管理者アドレス
+Admin.create!(email: 'admin@webcamp.jp', password: '123123')

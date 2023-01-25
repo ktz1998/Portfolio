@@ -26,6 +26,7 @@
     </div>
     
     <div class="check_box">
+      <h5>タグを選択</h5>
       <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
         <div class='form-check'>
           <%= tag.label do %>

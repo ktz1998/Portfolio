@@ -80,15 +80,6 @@ ActiveRecord::Schema.define(version: 2023_01_21_110402) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tagmaps", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_tagmaps_on_item_id"
-    t.index ["tag_id"], name: "index_tagmaps_on_tag_id"
-  end
-
   create_table "tags", force: :cascade do |t|
     t.string "tag_name"
     t.datetime "created_at", precision: 6, null: false
@@ -113,6 +104,4 @@ ActiveRecord::Schema.define(version: 2023_01_21_110402) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "item_tags", "items"
   add_foreign_key "item_tags", "tags"
-  add_foreign_key "tagmaps", "items"
-  add_foreign_key "tagmaps", "tags"
 end
