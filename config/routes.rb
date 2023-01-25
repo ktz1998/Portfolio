@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     resources :items, only: [:index, :show, :destroy]
+    resources :tags, only: [:index, :edit, :destroy]
     get "homes/top"
   end
 

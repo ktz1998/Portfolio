@@ -14,14 +14,11 @@
           <span class="star-rating-back">★★★★★</span>
         </span>
         <p>投稿者：<%= @item.user.name %></p>
-        <%# if @item.user == current_user %>
         <p>
-          <!--<span><%#= link_to '編集', edit_item_path(@item), class: "btn btn-sm btn-success" %></span>-->
           <span>
-            <%= link_to '削除' @item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+            <%= link_to '削除', admin_item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
           </span>
         </p>
-        <%# end %>
         <p>
           <% @item.tags.each do |tag| %>
           <%= tag.tag_name %>

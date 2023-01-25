@@ -1,7 +1,6 @@
 <div class="container">
   <h3 class="pt-3">会員一覧</h3>
   <div class="row">
-    <% @user.each do |u| %>
     <table class="table">
       <thead>
         <tr>
@@ -13,22 +12,23 @@
         </tr>
       </thead>
       <tbody>
+      <% @users.each do |u| %>
         <tr>
           <td><%= u.id %></td>
           <td><%= u.name %></td>
           <td><%= u.email %></td>
           <td><%= u.items.count %></td>
           <td>
-            <% if customer.is_deleted == false %>
+            <% if u.is_deleted == false %>
               <p class="text-success">有効</p>
             <% else %>
-              <p class="text-secondary">退会済み</p>
+              <p class="text-danger">無効</p>
             <% end %>
           </td>
         </tr>
+      <% end %>
       </tbody>
     </table>
-    <% end %>
 
   
 </div>

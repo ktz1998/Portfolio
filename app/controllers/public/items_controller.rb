@@ -10,9 +10,9 @@ class Public::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user_id = current_user.id
     if @item.save
-      redirect_to items_path, notice: '投稿が完了しました'
+      redirect_to items_path, notice: '投稿が完了しました。'
     else
-      flash.now[:alert] = '投稿に失敗しました'
+      flash.now[:alert] = '投稿に失敗しました。文字数を確認してください。'
       render "new"
     end
   end

@@ -5,7 +5,7 @@
     <%= f.file_field :image, accept: "image/*" , class: "mb-3" %>
   <h5 class="mt-3">製品名</h4>
     <%= f.text_field :name, class: "col-md-6 mb-3" %>
-  <h5 class="mt-3">説明</h4>
+  <h5 class="mt-3">製品概要（252文字以内）</h4>
     <%= f.text_area :description, class: "col-md-6 mb-3", :style => "height: 110px;" %>
   <h5 class="mt-3">価格</h4>
   　¥<%= f.text_field :price, class: "col-md-6 mb-3" %>
@@ -26,7 +26,7 @@
     </div>
     
     <div class="check_box">
-      <h5>タグを選択</h5>
+      <h5>タグを選択（任意）</h5>
       <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
         <div class='form-check'>
           <%= tag.label do %>
