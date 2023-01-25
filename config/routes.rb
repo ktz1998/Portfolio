@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   namespace :admin do
-
+    resources :users
+    resources :items, only: [:index, :show, :destroy]
+    get "homes/top"
   end
 
   #顧客用

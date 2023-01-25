@@ -14,16 +14,14 @@
           <span class="star-rating-back">★★★★★</span>
         </span>
         <p>投稿者：<%= @item.user.name %></p>
-        <% if @item.user == current_user %>
+        <%# if @item.user == current_user %>
         <p>
-          <span><%= link_to '編集', edit_item_path(@item), class: "btn btn-sm btn-success" %></span>
+          <!--<span><%#= link_to '編集', edit_item_path(@item), class: "btn btn-sm btn-success" %></span>-->
           <span>
-            <%= link_to @item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
-              <i class="fa-solid fa-trash-can"></i>
-            <% end %>
+            <%= link_to '削除' @item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
           </span>
         </p>
-        <% end %>
+        <%# end %>
         <p>
           <% @item.tags.each do |tag| %>
           <%= tag.tag_name %>
@@ -41,10 +39,9 @@
     </div>
   </div>
   <div class="mt-3 mb-5">
-    <%= link_to '製品一覧へ戻る', items_path %>
+    <%= link_to '製品一覧へ戻る', admin_items_path %>
   </div>
   
-  <%= render "public/comments/show", item: @item %>
-  <%= render "public/comments/form", item: @item, comment: @comment %>
-  
+  <%= render "admin/comments/show", item: @item %>
+
 </div>

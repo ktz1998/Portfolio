@@ -9,8 +9,12 @@ class Public::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
-    @item.save
-    redirect_to items_path
+    if @item.save
+      redirect_to items_path, notice: '投稿が完了しました'
+    else
+      flash.now[:alert] = '投稿に失敗しました'
+      render "new"
+    end
   end
 
   def index
@@ -19,7 +23,6 @@ class Public::ItemsController < ApplicationController
     else
       @items = Item.all
     end
-    
     @tags = Tag.all
   end
 

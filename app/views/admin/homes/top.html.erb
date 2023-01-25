@@ -1,0 +1,34 @@
+<div class="container">
+  <h3 class="pt-3">会員一覧</h3>
+  <div class="row">
+    <% @user.each do |u| %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>会員名</th>
+          <th>メールアドレス</th>
+          <th>投稿数</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= u.id %></td>
+          <td><%= u.name %></td>
+          <td><%= u.email %></td>
+          <td><%= u.items.count %></td>
+          <td>
+            <% if customer.is_deleted == false %>
+              <p class="text-success">有効</p>
+            <% else %>
+              <p class="text-secondary">退会済み</p>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <% end %>
+
+  
+</div>
