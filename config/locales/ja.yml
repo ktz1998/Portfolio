@@ -1,6 +1,6 @@
 ja:
   #日時のデフォルトの書式を%Y/%m/%d %H:%M:%Sにする
-  time:　
+  time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
   #ページネーションを日本語表記に

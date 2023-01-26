@@ -1,0 +1,2 @@
+environment下で
+$ ssh -i ~/.ssh/practice-aws.pem ec2-user@35.79.55.151
