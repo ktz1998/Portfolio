@@ -1,4 +1,4 @@
-class Public::CommentsController < ApplicationController
+class Admin::CommentsController < ApplicationController
 
   def destroy
     Comment.find_by(id: params[:id], item_id: params[:item_id]).destroy
