@@ -1,8 +1,10 @@
 ja:
-  time:　#日時のデフォルトの書式を%Y/%m/%d %H:%M:%Sにする
+  #日時のデフォルトの書式を%Y/%m/%d %H:%M:%Sにする
+  time:　
     formats:
       default: "%Y/%m/%d %H:%M:%S"
-  views:　#ページネーションを日本語表記に
+  #ページネーションを日本語表記に
+  views:
     pagination:
       first: "&laquo; 最初"
       last: "最後 &raquo;"
