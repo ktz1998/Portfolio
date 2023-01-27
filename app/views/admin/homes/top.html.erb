@@ -20,7 +20,12 @@
           <td><%= u.items.count %></td>
           <td>
             <% if u.is_deleted == false %>
-              <p class="text-success">有効</p>
+              <p class="text-success">
+                <span>有効</span>
+                <span>
+                  <%= link_to '退会処理', admin_top_withdraw_path(), method: :patch, data: { confirm: '退会させますか？' }, class: "btn btn-sm btn-warning" %>
+                </span>
+              </p>
             <% else %>
               <p class="text-danger">無効</p>
             <% end %>
@@ -30,5 +35,5 @@
       </tbody>
     </table>
   <% paginate @users %>
-  
+  </div>
 </div>

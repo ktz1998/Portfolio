@@ -19,9 +19,9 @@ class Public::ItemsController < ApplicationController
 
   def index
     if params[:tag_id].present?
-      @items = Item.includes(:tags).where(tags: {id: params[:tag_id]}).page(params[:page]).per(8)
+      @items = Item.includes(:tags).where(tags: {id: params[:tag_id]}).page(params[:page]).per(2)
     else
-      @items = Item.page(params[:page]).per(8)
+      @items = Item.page(params[:page]).per(4)
     end
     @tags = Tag.all
   end

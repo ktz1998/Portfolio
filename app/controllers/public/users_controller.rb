@@ -19,7 +19,7 @@ class Public::UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :is_deleted)
   end
 
   def ensure_correct_user
