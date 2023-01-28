@@ -4,7 +4,7 @@ class Admin::HomesController < ApplicationController
   end
   
   def withdraw
-    @user = User.find_by(name: params[:name])
+    @user = User.find(params[:user_id]) # User.find_by(name: params[:user_id])
     @user.update(is_deleted: true)
     reset_session
     redirect_to request.referer

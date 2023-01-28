@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <h4>タグ編集</h4>
+　</div>
+　<div class="row">
+    <div class="d-flex flex-row">
+      <p class="mx-3">タグ名<p>
+      <%= form_with model: @tag, url: admin_tag_path, method: :patch do |f|  %>
+      <%= f.text_field :tag_name , class: 'mx-3'%>
+      <%= f.submit '更新', class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

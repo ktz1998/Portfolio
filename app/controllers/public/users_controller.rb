@@ -1,10 +1,9 @@
 class Public::UsersController < ApplicationController
+  before_action :is_matching_login_user
+  
   def show
     @user = User.find(params[:id])
     @items = @user.items.page(params[:page]).per(10)
-  end
-
-  def edit
   end
 
   def update
@@ -19,13 +18,14 @@ class Public::UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit(:name, :is_deleted)
+    params.require(:user).permit(:name)
   end
 
-  def ensure_correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_path(current_user)
+  def is_matching_login_user
+    user_id = params[:id].to_i
+    unless user_id == current_user.id
+      redirect_to items_path
     end
   end
+  
 end

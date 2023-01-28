@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-
   #管理者用
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
   namespace :admin do
     resources :items, only: [:index, :show, :destroy]
-    resources :tags, only: [:index, :edit, :destroy]
+    resources :tags, only: [:index, :create, :edit, :update, :destroy]
     get "/top" => "homes#top"
-    patch "/top/withdraw" => "homes#withdraw"
+    patch "/top/withdraw/:user_id" => "homes#withdraw"
   end
 
   #顧客用
