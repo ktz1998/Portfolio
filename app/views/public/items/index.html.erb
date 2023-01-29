@@ -38,7 +38,7 @@
               <% end %>
               </div>
               
-              <% if item.user == current_user %>
+              <% if item.user == current_user && current_user.email != "aaa@aaa.com" %>
               <p>
                 <span><%= link_to '編集', edit_item_path(item), class: "btn btn-sm btn-success" %></span>
                 <span>

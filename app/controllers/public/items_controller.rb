@@ -1,6 +1,5 @@
 class Public::ItemsController < ApplicationController
-  # before_action :authenticate_user!
-  # before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   
   def new
     @item = Item.new
@@ -12,7 +11,7 @@ class Public::ItemsController < ApplicationController
     if @item.save
       redirect_to items_path, notice: '投稿が完了しました。'
     else
-      flash.now[:alert] = '投稿に失敗しました。文字数を確認してください。'
+      flash.now[:alert] = '投稿に失敗しました。文字数など内容を再確認してください。'
       render "new"
     end
   end

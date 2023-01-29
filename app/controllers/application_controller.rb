@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   
   def after_sign_up_path_for(resource)
     root_path
-    flash.now[:notice] = "新規登録に成功、ようこそデバイス見聞録へ！"
   end
   
   def after_sign_in_path_for(resource)
