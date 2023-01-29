@@ -2,6 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_user, only: [:create]
 
   #ゲストログイン機能
   def new_guest
@@ -10,16 +11,17 @@ class Public::SessionsController < Devise::SessionsController
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
   
-  #退会ユーザーの重複登録阻止
-  def reject_inactive_user
-    @user = User.find_by(name: params[:user][:name])
-    if @user
-      if @user.valid_password?(params[:user][:password]) && !@user.is_valid
-        redirect_to new_user_session_path
+  # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
+  def reject_user
+    @user = User.find_by(email: params[:user][:email])
+    if @user 
+      if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true)
+        flash[:alert] = "退会されたアカウントです。再度登録してさい。"
+        redirect_to new_user_registration_path
       end
     end
   end
-
+  
   # GET /resource/sign_in
   # def new
   #   super
