@@ -1,5 +1,12 @@
 class Public::ItemsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  def ensure_correct_user
+    @item = Item.find(params[:id])
+    unless @item.user == current_user
+      flash[:alert] = "権限がありません"
+      redirect_to items_path
+    end
+  end
   
   def new
     @item = Item.new
@@ -55,4 +62,6 @@ class Public::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :image, :description, :price, :review, :rate, tag_ids: [])
   end
+  
+  
 end
