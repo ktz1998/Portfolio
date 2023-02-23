@@ -1,0 +1,40 @@
+<%= form_with model:item do |f| %>
+  <h5 class="mt-3">画像</h5>
+    <%= f.file_field :image, accept: "image/*" , class: "mb-3" %>
+  <h5 class="mt-3">製品名</h5>
+    <%= f.text_field :name, class: "col-md-6 mb-3" %>
+  <h5 class="mt-3">製品概要（252文字以内）</h5>
+    <%= f.text_area :description, class: "col-md-6 mb-3", :style => "height: 110px;" %>
+  <h5 class="mt-3">価格（購入時価格を入力してください）</h5>
+    <span>¥<%= f.text_field :price, class: "col-md-3 mb-3" %></span>
+  <h5 class="mt-3">レビュー（800文字以内）</h5>
+    <%= f.text_area :review, class: "col-md-6 mb-3", :style => "height: 110px;" %>
+  <h5 class="mt-3">評価</h5>
+    <div class="post_form md-3">
+      <%= f.radio_button :rate, 5 ,id: 'star1'%>
+        <label for="star1">★</label>
+      <%= f.radio_button :rate, 4 ,id: 'star2'%>
+        <label for="star2">★</label>
+      <%= f.radio_button :rate, 3 ,id: 'star3'%>
+        <label for="star3">★</label>
+      <%= f.radio_button :rate, 2 ,id: 'star4'%>
+        <label for="star4">★</label>
+      <%= f.radio_button :rate, 1 ,id: 'star5'%>
+        <label for="star5">★</label>
+    </div>
+    
+  <div class="check_box">
+    <h5>タグを選択（任意）</h5>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
+      <div class='form-check'>
+        <%= tag.label do %>
+      　   <%= tag.check_box %>
+      　   <%= tag.text %>
+      　<% end %>
+      </div>
+    <% end %>
+  </div>
+  
+  <%= f.submit '投稿',class: "btn btn-success" %>
+
+<% end %>

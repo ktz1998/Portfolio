@@ -8,7 +8,7 @@
                 <span><%= l comment.created_at %></span> <!--時間表示、 lメソッドを使って書式を指定する -->
             </p>
             <p>
-              <% if comment.user == current_user %>
+              <% if comment.user == current_user || current_user.email == 'admin@webcamp.jp' %>
                   <%= link_to '削除', item_comment_path(item, comment), method: :delete, class: "btn btn-sm btn-danger" %>
               <% end %>
             </p>
