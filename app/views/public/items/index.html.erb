@@ -1,19 +1,7 @@
 <div class="container">
   <h2 class="navbar">気になる製品を見てみよう</h2>
   
-  <!--タグ一覧表示-->
-  <div class="mb-2">タグ:
-    <% @tags.each do |tag| %>
-      <span>
-        <%= link_to tag.tag_name, items_path(tag_id: tag.id), class: "btn btn-sm btn-light" %>
-      </span>
-    <% end %>
-    <!--タグ指定なし-->
-    <span>
-      <%= link_to "指定なし", items_path, class: "btn btn-sm btn-light" %>
-    </span>
-  </div>
-  
+  <%= render "layouts/tag", tags: @tags %>  <!--タグ一覧表示-->
   <div class="row">
     <% @items.each do |item| %>
       <div class="mx-auto">
