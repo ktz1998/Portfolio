@@ -6,7 +6,7 @@
     <% @items.each do |item| %>
       <div class="mx-auto">
         <div class="card-deck">
-          <div class="card" style="width: 15rem; height: 400px;">
+          <div class="card" style="width: 15rem; height: 500px;">
             <div class="d-flex align-items-center justify-content-center" style="height: 200px;">
              <%= image_tag item.get_image(200,200) %>       
             </div>
@@ -21,9 +21,12 @@
               <p class="card-text">投稿者：<%= item.user.name %></p>
               
               <div>
-              <% item.tags.each do |tag| %>
-                <%= tag.tag_name %>
-              <% end %>
+                <span><i class="fa-solid fa-tags"></i>.</span>
+                <% item.tags.each do |tag| %>
+                  <span class="border border-info">
+                    <%= tag.tag_name %>
+                  </span>
+                <% end %>
               </div>
               
               <% if item.user == current_user && current_user.email != "aaa@aaa.com" %>
