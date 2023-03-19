@@ -1,0 +1,49 @@
+<div class="container">
+  <h2 class="navbar">レビュー検索結果</h2>
+  <%= render "layouts/tag", tags: @tags %>
+  <div class="row">
+    <% @results.each do |item| %>
+    <div class="mx-auto">
+      <div class="card-deck">
+        <div class="card" style="width: 15rem; height: 500px;">
+          <div class="d-flex align-items-center justify-content-center" style="height: 200px;">
+           <%= image_tag item.get_image(200,200) %>       
+          </div>
+          <div class="card-body">
+            <%= link_to(item) do %>
+              <h5 class="card-title margin-b0"><%= item.name %></h5>
+            <% end %>
+            <span class="star-rating margin-b0">
+              <span class="star-rating-front" style="width: <%= getPercent(item.rate) %>%;">★★★★★</span>
+              <span class="star-rating-back">★★★★★</span>
+            </span>
+            <p class="card-text">投稿者：<%= item.user.name %></p>
+            
+            <div>
+              <span><i class="fa-solid fa-tags"></i>.</span>
+              <% item.tags.each do |tag| %>
+                <span class="text-muted">
+                  <%= tag.tag_name %>,
+                </span>
+              <% end %>
+            </div>
+            
+            <% if item.user == current_user && current_user.email != "aaa@aaa.com" %>
+            <p>
+              <span><%= link_to '編集', edit_item_path(item), class: "btn btn-sm btn-success" %></span>
+              <span>
+                <%= link_to item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
+                  <i class="fa-solid fa-trash-can"></i>
+                <% end %>
+              </span>
+            </p>
+            <% end %>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= paginate @results %>
+</div>

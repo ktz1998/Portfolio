@@ -1,5 +1,7 @@
 class Public::ItemsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :set_q, only: [:index, :search]
+  
   def ensure_correct_user
     @item = Item.find(params[:id])
     unless @item.user == current_user
@@ -56,12 +58,20 @@ class Public::ItemsController < ApplicationController
     @item.destroy
     redirect_to items_path
   end
-
+  
+  def search
+    @results = @q.result.page(params[:page]).per(8)
+    @tags = Tag.all
+  end
+  
    private
 
   def item_params
     params.require(:item).permit(:name, :image, :description, :price, :review, :rate, tag_ids: [])
   end
   
+  def set_q
+    @q = Item.ransack(params[:q])
+  end
   
 end
